@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../28_Michibayashi_js03/reset.css">
+    <link rel="stylesheet" href="../28_Michibayashi_js03/style.css">
+ 
+    <!-- 本日の家事分担を決めようアプリの作成 -->
+</head>
+<body>
+
+    <header>
+        <h1>  明日の家事分担を決めるルーレット</h1>
+    </header>
+
+    <main>
+      <div class="morning-duty">
+        <h2> 朝の部</h2>
+        <p>明日も頑張ろう</p>
+      </div>
+
+
+        
+            <p id="button"><input type="button" value="明日朝の分担は…？"  id="sharing"> </p>
+            
+            <div class="m-table">
+                <table width=1200px >
+                  <tbody>    
+                    <tr>
+                        <th ></th>
+                        <th >母の担当</th>
+                        <th>父の担当</th>
+                    </tr>
+
+                    <tr>
+                        <th id="">やること1</th>
+                        <td id="m-m-echo1"></td>
+                        <td id="m-f-echo1"></td> 
+                    </tr>
+                    <tr>
+                        <th id="">やること2</th>
+                        <td id="m-m-echo2"></td>
+                        <td id="m-f-echo2"></td> 
+                    </tr>
+                  </tbody>                
+                </table>
+
+            </div> 
+
+    <main>
+      <div class="night-duty">
+        <h2> 夜の部</h2>
+        <p>この日は残業できるかな・・？</p>
+      </div>
+
+
+        
+            <p id="n_button"><input type="button" value="明日夜の分担は…？"  id="sharing"> </p>
+            
+            <div class="n-table">
+                <table width=1200px >
+                  <tbody>    
+                    <tr>
+                        <th ></th>
+                        <th >母の担当</th>
+                        <th>父の担当</th>
+                    </tr>
+
+                    <tr>
+                        <th id="">やること1</th>
+                        <td id="n-m-echo1"></td>
+                        <td id="n-f-echo1"></td> 
+                    </tr>
+                    <tr>
+                        <th id="">やること2</th>
+                        <td id="n-m-echo2"></td>
+                        <td id="n-f-echo2"></td> 
+                    </tr>
+                  </tbody>                
+                </table>                
+            </div>
+
+            <div>
+
+            <h2 class="fukidashi">終わったらコメントを送り合おう！</h2>
+            
+              
+              <div class="Form">
+                <h4>記入者</h4>
+                <input type="text" class="Form-Item-Imput" id="key" placeholder="例）母">
+                <h4>コメント</h4>
+                <textarea id="memo" placeholder="例)お疲れ様、ありがとう！料理後はシンクのゴミも綺麗にしてね"></textarea>
+              </div>
+
+ 
+                  <button id="send">Send</button>
+                  
+              
+
+              <div class=chat>
+                  <!-- 保存されたデータが表示される箇所 -->
+                  <h4>コメント履歴</h4>
+                  <div id="output"></div>
+              </div>
+            
+            </div>
+        
+    </main>  
+
+
+<!-- <!javascriptの区切り ---------------------------------------------------------------->
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- // ここにJavascriptを記述する -->
+<!-- // jqeryを入れた -->
+<script>
+/** 重複チェック用配列 */
+var randoms = [];
+/** 最小値と最大値 */
+var min = 0, max = 3;
+/** 重複チェックしながら乱数作成 */
+for(i = min; i <= max; i++){
+  while(true){
+    var tmp = intRandom(min, max);
+    if(!randoms.includes(tmp)){
+      randoms.push(tmp);
+      break;
+    }
+  }
+}
+console.log(tmp);
+
+/** min以上max以下の整数値の乱数を返す */
+function intRandom(min, max){
+  return Math.floor( Math.random() * (max - min + 1)) + min;
+}
+console.log(randoms);
+const tanTou = [
+  "洗濯機を回して干す", //0
+  "朝ご飯用意＆弁当作り＆食器洗い", //1
+  "幼児を起こし、着替え、ご飯を食べさせる", //2
+  "ゴミ捨て" //4
+];
+var x = randoms.shift();
+console.log('先頭要素', x);
+console.log(tanTou[tmp]);
+let display = tanTou[x]
+
+var x2 = randoms.shift();
+console.log('先頭要素', x2);
+console.log(tanTou[tmp]);
+let display2 = tanTou[x2]
+
+var x3 = randoms.shift();
+console.log('先頭要素', x3);
+console.log(tanTou[tmp]);
+let display3 = tanTou[x3]
+
+var x4 = randoms.shift();
+console.log('先頭要素', x4);
+console.log(tanTou[tmp]);
+let display4 = tanTou[x4]
+
+
+console.log(display);
+$("#button").on("click", function(){
+  $("#m-m-echo1").html(display);   
+  $("#m-m-echo2").html(display2);   
+});
+
+$("#button").on("click", function(){
+  $("#m-f-echo1").html(display3);   
+  $("#m-f-echo2").html(display4);   
+});
+
+
+
+// 夜の部javascript-----------------------------------------------------------------------------
+
+/** 重複チェック用配列 */
+var randoms = [];
+/** 最小値と最大値 */
+var min = 0, max = 3;
+/** 重複チェックしながら乱数作成 */
+for(i = min; i <= max; i++){
+  while(true){
+    var tmp = intRandom(min, max);
+    if(!randoms.includes(tmp)){
+      randoms.push(tmp);
+      break;
+    }
+  }
+}
+console.log(tmp);
+
+/** min以上max以下の整数値の乱数を返す */
+function n_intRandom(min, max){
+  return Math.floor( Math.random() * (max - min + 1)) + min;
+}
+console.log(randoms);
+const n_tanTou = [
+  "夕食用食材の買い出し、ご飯作り", //0
+  "夕食後食器洗い", //1
+  "子どもとお風呂", //2
+  "子供の寝かしつけ" //4
+];
+var x = randoms.shift();
+console.log('先頭要素', x);
+console.log(n_tanTou[tmp]);
+let display_n1 = n_tanTou[x]
+
+var x2 = randoms.shift();
+console.log('先頭要素', x2);
+console.log(n_tanTou[tmp]);
+let display_n2 = n_tanTou[x2]
+
+var x3 = randoms.shift();
+console.log('先頭要素', x3);
+console.log(n_tanTou[tmp]);
+let display_n3 = n_tanTou[x3]
+
+var x4 = randoms.shift();
+console.log('先頭要素', x4);
+console.log(n_tanTou[tmp]);
+let display_n4 = n_tanTou[x4]
+
+
+console.log(display);
+$("#n_button").on("click", function(){
+  $("#n-m-echo1").html(display_n1);   
+  $("#n-m-echo2").html(display_n2);   
+});
+
+$("#n_button").on("click", function(){
+  $("#n-f-echo1").html(display_n3);   
+  $("#n-f-echo2").html(display_n4);   
+});
+
+</script>
+
+<!-- はり付けてみたチャットをfirestorageに移設 -->
+
+
+  <!-- // Import the functions you need from the SDKs you need -->
+  <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase.js"></script>
+  <!-- // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries -->
+
+  <script>
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyD_dksQj7WGY-wLi-7sRp7CUTIg7kEWUG8",
+    authDomain: "dev21-js03.firebaseapp.com",
+    databaseURL:"https://dev21-js03-default-rtdb.firebaseio.com/",
+    projectId: "dev21-js03",
+    storageBucket: "dev21-js03.appspot.com",
+    messagingSenderId: "1033693678955",
+    appId: "1:1033693678955:web:5cf167e555b53db118d02e"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  //firebaseのデーターベース（保存させる場所）を使いますよ
+  const newPostRef = firebase.database().ref();
+
+  // 保存ボタンをクリックされたら次の処理をする
+  $("#send").on("click", function () {
+      
+      newPostRef.push({
+        username: $("#key").val(),
+        text: $("#memo").val(),       
+      })
+      $("#memo").val("");
+    });
+
+    // 日付の取得をしますよ
+    new Date().toLocaleString({ timeZone: 'Asia/Tokyo' })
+
+    let newDate = new Date();
+    let saveY =  newDate.getFullYear() ;
+    let saveM = newDate.getMonth() + 1;
+    let saveD = newDate.getDate();
+    let saveT = newDate.getHours();
+    let saveMin = newDate.getMinutes();
+    let saveDate = saveY + "/" + saveM + "/"+ saveD + " " + saveT + ":" + saveMin; 
+    console.log(saveY)
+    console.log(saveM)
+    console.log(saveD)
+    console.log(saveT)
+    console.log(saveMin)
+
+
+    // 受信処理
+    newPostRef.on("child_added", function (data) {
+      let v = data.val(); 
+      let k =data.key;
+
+      let str = `<table  border="2" style="border-collapse: collapse; border-color: grey">
+                  <dl>${v.username}
+                  <dt>${v.text}</dt>
+                  <dd>${saveDate}</dd>
+                </dl>
+                </table>` ;
+
+        $("#output").prepend(str);
+
+    })
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
